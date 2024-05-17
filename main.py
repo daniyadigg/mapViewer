@@ -35,6 +35,9 @@ class MapViewer(QMainWindow):
         self.osm_button.clicked.connect(self.show_osm)
         button_panel.addWidget(self.osm_button)
 
+        self.time_zone_button = QPushButton('Часовые пояса')
+        button_panel.addWidget(self.time_zone_button)
+
         spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         button_panel.addItem(spacer)
 
