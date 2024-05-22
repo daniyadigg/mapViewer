@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QSpacerItem, QSizePolicy
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtCore import QUrl
+from time_zone_window import TimeZonesWindow
 
 
 class MapViewer(QMainWindow):
@@ -36,6 +37,7 @@ class MapViewer(QMainWindow):
         button_panel.addWidget(self.osm_button)
 
         self.time_zone_button = QPushButton('Часовые пояса')
+        self.time_zone_button.clicked.connect(self.show_time_zones)
         button_panel.addWidget(self.time_zone_button)
 
         spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
@@ -52,6 +54,10 @@ class MapViewer(QMainWindow):
 
     def show_osm(self):
         self.web_view.setUrl(QUrl("https://www.openstreetmap.org/"))
+
+    def show_time_zones(self):
+        self.time_zones_window = TimeZonesWindow()
+        self.time_zones_window.show()
 
 
 if __name__ == "__main__":
