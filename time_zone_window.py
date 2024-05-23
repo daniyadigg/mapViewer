@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QWidget, QFrame
 from datetime import datetime
 import pytz
 from PyQt5.QtCore import QTimer
@@ -22,11 +22,24 @@ class TimeZonesWindow(QMainWindow):
             ("Сидней", "Australia/Sydney")
         ]
 
+        # Заголовок
+        header = QLabel("Текущее время столиц мира")
+        header.setStyleSheet("font-size: 24px; font-weight: bold; padding: 10px;")
+        self.layout.addWidget(header)
+
+        # Разделитель
+        line = QFrame()
+        line.setFrameShape(QFrame.HLine)
+        line.setFrameShadow(QFrame.Sunken)
+        self.layout.addWidget(line)
+
         self.labels = []
         for city, _ in self.cities:
-            label = QLabel(f"{city}:")
-            self.layout.addWidget(label)
-            self.labels.append(label)
+            time_label = QLabel("")
+            time_label.setStyleSheet("font-size: 16px; padding: 5px;")
+            self.layout.addWidget(time_label)
+
+            self.labels.append(time_label)
 
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_times)
