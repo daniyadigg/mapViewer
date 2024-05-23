@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QPu
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtCore import QUrl
 from time_zone_window import TimeZonesWindow
+from calendar_window import CalendarWindow
 
 
 class MapViewer(QMainWindow):
@@ -44,7 +45,7 @@ class MapViewer(QMainWindow):
         button_panel.addItem(spacer)
 
         self.calendar_button = QPushButton('Календарь')
-        #self.calendar_button.clicked.connect(self.show_calendar)
+        self.calendar_button.clicked.connect(self.show_calendar)
         button_panel.addWidget(self.calendar_button)
 
         layout.addLayout(button_panel)  # Добавляем панель кнопок
@@ -61,6 +62,10 @@ class MapViewer(QMainWindow):
     def show_time_zones(self):
         self.time_zones_window = TimeZonesWindow()
         self.time_zones_window.show()
+
+    def show_calendar(self):
+        self.calendar_window = CalendarWindow()
+        self.calendar_window.show()
 
 
 if __name__ == "__main__":
