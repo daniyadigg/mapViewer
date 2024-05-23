@@ -43,6 +43,9 @@ class MapViewer(QMainWindow):
         spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         button_panel.addItem(spacer)
 
+        self.calendar_button = QPushButton('Календарь')
+        #self.calendar_button.clicked.connect(self.show_calendar)
+        button_panel.addWidget(self.calendar_button)
 
         layout.addLayout(button_panel)  # Добавляем панель кнопок
 
